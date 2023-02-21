@@ -15,3 +15,11 @@ func maxInt(x, y int) int {
 		return x
 	}
 }
+
+func minInt(x, y int) int {
+	if x < y {
+		return x
+	} else {
+		return y
+	}
+}
