@@ -1,13 +1,13 @@
 package leetcode
 
 func reverseList(head *ListNode) *ListNode {
-	var pre, cur, tmp *ListNode
+	var pre, cur, next *ListNode
 	cur = head
 	for cur != nil {
-		tmp = cur.Next
+		next = cur.Next
 		cur.Next = pre
 		pre = cur
-		cur = tmp
+		cur = next
 	}
 	return pre
 }

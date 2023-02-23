@@ -1,9 +1,8 @@
 package leetcode
 
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
-	root := &ListNode{0, head}
-	slow, fast := root, root
-	var pre *ListNode
+	root := &ListNode{Next: head}
+	pre, slow, fast := root, root, root
 	for i := 0; i < n; i++ {
 		fast = fast.Next
 	}
