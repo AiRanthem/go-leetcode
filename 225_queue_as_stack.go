@@ -27,9 +27,9 @@ func (s *MyStack) refresh() {
 	}
 }
 
-func Constructor() MyStack {
-	return MyStack{&QueueToBeStack{}, &QueueToBeStack{}}
-}
+//func Constructor() MyStack {
+//	return MyStack{&QueueToBeStack{}, &QueueToBeStack{}}
+//}
 
 func (s *MyStack) Push(x int) {
 	s.W.Push(x)
