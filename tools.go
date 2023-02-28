@@ -24,6 +24,10 @@ func minInt(x, y int) int {
 	}
 }
 
+func minTInt(x, y, z int) int {
+	return minInt(minInt(x, y), z)
+}
+
 type Stack []int
 
 func (s *Stack) Push(x int) {
