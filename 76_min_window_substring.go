@@ -2,10 +2,8 @@ package leetcode
 
 func minWindow(s string, t string) string {
 	want := make(map[byte]int)
-	//tHas := make(map[byte]struct{})
 	for i := 0; i < len(t); i++ {
 		want[t[i]]++
-		//tHas[t[i]] = struct{}{}
 	}
 	subLenLeft := len(t)
 	l := 0
