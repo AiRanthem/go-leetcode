@@ -1,26 +1,27 @@
 package leetcode
 
 func getIntersectionNode(headA, headB *ListNode) *ListNode {
-	var la, lb int
-	var cur *ListNode
-	cur = headA
-	for cur != nil {
+	la, lb := 0, 0
+	ha, hb := headA, headB
+	for ha != nil {
 		la++
-		cur = cur.Next
+		ha = ha.Next
 	}
-	cur = headB
-	for cur != nil {
+	for hb != nil {
 		lb++
-		cur = cur.Next
+		hb = hb.Next
 	}
 	if la < lb {
-		la, lb = lb, la
 		headA, headB = headB, headA
+		la, lb = lb, la
 	}
 	for i := 0; i < la-lb; i++ {
 		headA = headA.Next
 	}
-	for headA != headB {
+	for headA != nil {
+		if headA == headB {
+			break
+		}
 		headA = headA.Next
 		headB = headB.Next
 	}
