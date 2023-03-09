@@ -47,3 +47,8 @@ func (s *Stack) Pop() int {
 	*s = (*s)[:s.Len()-1]
 	return i
 }
+
+type ChildNode struct {
+	Val      int
+	Children []*ChildNode
+}
