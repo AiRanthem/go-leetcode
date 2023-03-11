@@ -1,5 +1,7 @@
 package leetcode
 
+import "strconv"
+
 func new2dSlice(m, n int) [][]int {
 	s := make([][]int, m)
 	for i := 0; i < m; i++ {
@@ -51,4 +53,9 @@ func (s *Stack) Pop() int {
 type ChildNode struct {
 	Val      int
 	Children []*ChildNode
+}
+
+func atoi(s string) int {
+	x, _ := strconv.Atoi(s)
+	return x
 }

@@ -1,30 +1,35 @@
 package leetcode
 
-var phoneNumberMap = map[byte][]string{
-	'2': {"a", "b", "c"},
-	'3': {"d", "e", "f"},
-	'4': {"g", "h", "i"},
-	'5': {"j", "k", "l"},
-	'6': {"m", "n", "o"},
-	'7': {"p", "q", "r", "s"},
-	'8': {"t", "u", "v"},
-	'9': {"w", "x", "y", "z"},
-}
+import "strings"
 
-func letterCombinations(digits string) []string {
+func letterCombinations(digits string) (result []string) {
 	if len(digits) == 0 {
-		return []string{}
+		return
 	}
-	if len(digits) == 1 {
-		return phoneNumberMap[digits[0]]
+	var phoneNumberMap = map[byte][]string{
+		'2': {"a", "b", "c"},
+		'3': {"d", "e", "f"},
+		'4': {"g", "h", "i"},
+		'5': {"j", "k", "l"},
+		'6': {"m", "n", "o"},
+		'7': {"p", "q", "r", "s"},
+		'8': {"t", "u", "v"},
+		'9': {"w", "x", "y", "z"},
 	}
-	combs := letterCombinations(digits[1:])
-	letters := phoneNumberMap[digits[0]]
-	var results []string
-	for i := 0; i < len(letters); i++ {
-		for j := 0; j < len(combs); j++ {
-			results = append(results, letters[i]+combs[j])
+	var path []string
+	var dfs func(n int)
+	dfs = func(n int) {
+		if n == len(digits) {
+			result = append(result, strings.Join(path, ""))
+		} else {
+			todo := phoneNumberMap[digits[n]]
+			for i := 0; i < len(todo); i++ {
+				path = append(path, todo[i])
+				dfs(n + 1)
+				path = path[:len(path)-1]
+			}
 		}
 	}
-	return results
+	dfs(0)
+	return
 }

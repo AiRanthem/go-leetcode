@@ -1,17 +1,19 @@
 package leetcode
 
 func subsets(nums []int) (ans [][]int) {
-	var set []int
+	var subset []int
 	var dfs func(int)
-	dfs = func(cur int) {
-		if cur == len(nums) {
-			ans = append(ans, append([]int(nil), set...))
+	dfs = func(i int) {
+		if i == len(nums) {
+			r := make([]int, len(subset))
+			copy(r, subset)
+			ans = append(ans, r)
 			return
 		}
-		set = append(set, nums[cur])
-		dfs(cur + 1)
-		set = set[:len(set)-1]
-		dfs(cur + 1)
+		dfs(i + 1)                       // not put
+		subset = append(subset, nums[i]) // put
+		dfs(i + 1)
+		subset = subset[:len(subset)-1]
 	}
 	dfs(0)
 	return
