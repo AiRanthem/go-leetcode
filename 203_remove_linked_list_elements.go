@@ -1,10 +1,5 @@
 package leetcode
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
 func removeElements(head *ListNode, val int) *ListNode {
 	root := &ListNode{0, head}
 	cur, next := root, head

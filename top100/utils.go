@@ -1,4 +1,4 @@
-package leetcode
+package top100
 
 import "strconv"
 
@@ -30,6 +30,18 @@ func minTInt(x, y, z int) int {
 	return minInt(minInt(x, y), z)
 }
 
+func atoi(s string) int {
+	x, _ := strconv.Atoi(s)
+	return x
+}
+
+func sumInt(arr []int) (s int) {
+	for i := 0; i < len(arr); i++ {
+		s += arr[i]
+	}
+	return
+}
+
 type Stack []int
 
 func (s *Stack) Push(x int) {
@@ -55,7 +67,13 @@ type ChildNode struct {
 	Children []*ChildNode
 }
 
-func atoi(s string) int {
-	x, _ := strconv.Atoi(s)
-	return x
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+type ListNode struct {
+	Val  int
+	Next *ListNode
 }

@@ -1,11 +1,5 @@
 package leetcode
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
-
 func postorderTraversal(root *TreeNode) []int {
 	var result []int
 	if root != nil {
