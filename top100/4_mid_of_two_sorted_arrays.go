@@ -9,13 +9,13 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 }
 
 func findMedianSortedArraysKthSmall(nums1 []int, nums2 []int, k int) float64 {
-	reduce := k / 2
 	if len(nums1) > len(nums2) {
 		nums1, nums2 = nums2, nums1
 	}
 	if len(nums1) == 0 {
 		return float64(nums2[k-1])
 	}
+	reduce := k / 2
 	if len(nums1) < reduce {
 		reduce = len(nums1)
 	}

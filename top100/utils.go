@@ -77,3 +77,32 @@ type ListNode struct {
 	Val  int
 	Next *ListNode
 }
+
+type MonoStack []int // 单调递减的栈
+
+func (m *MonoStack) Left() int {
+	return (*m)[0]
+}
+
+func (m *MonoStack) Right() int {
+	return (*m)[len(*m)-1]
+}
+
+func (m *MonoStack) LPop() int {
+	x := m.Left()
+	*m = (*m)[1:]
+	return x
+}
+
+func (m *MonoStack) RPop() int {
+	x := m.Right()
+	*m = (*m)[:len(*m)-1]
+	return x
+}
+
+func (m *MonoStack) RPush(x int) {
+	for len(*m) > 0 && m.Right() <= x {
+		m.RPop()
+	}
+	*m = append(*m, x)
+}

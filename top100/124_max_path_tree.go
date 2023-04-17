@@ -1,25 +1,25 @@
-package leetcode
+package top100
 
 import "math"
 
-func maxPathSum(root *TreeNode) int {
-	result := math.MinInt
-	var through func(node *TreeNode) int
-	through = func(node *TreeNode) int {
+func maxPathSum(root *TreeNode) (max int) {
+	max = math.MinInt
+	var contributionOf func(node *TreeNode) int
+	contributionOf = func(node *TreeNode) int {
 		if node == nil {
 			return 0
 		}
 		sum := node.Val
-		leftContribution := through(node.Left)
-		rightContribution := through(node.Right)
+		leftContribution := contributionOf(node.Left)
+		rightContribution := contributionOf(node.Right)
 		if leftContribution > 0 {
 			sum += leftContribution
 		}
 		if rightContribution > 0 {
 			sum += rightContribution
 		}
-		if sum > result {
-			result = sum
+		if sum > max {
+			max = sum
 		}
 		if leftContribution < rightContribution {
 			leftContribution = rightContribution
@@ -30,6 +30,6 @@ func maxPathSum(root *TreeNode) int {
 			return node.Val
 		}
 	}
-	through(root)
-	return result
+	_ = contributionOf(root)
+	return
 }
