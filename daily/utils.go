@@ -10,6 +10,13 @@ func new2dSlice(m, n int) [][]int {
 	return s
 }
 
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+
 func maxInt(x, y int) int {
 	if x < y {
 		return y
